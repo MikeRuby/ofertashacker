@@ -217,21 +217,19 @@ img#nuevas_ofertas{
 }
 
 .mainContent label.message{
-  font-size: 14px;
+  font-size: 12px;
 	color: #d00;
-	font-weight: normal;
-	margin: -20px 0 25px 0px;
+  font-family: arial, serif!important;
+  margin: -15px 0 0 0px;
+  float:left;
 }
 .mainContent p.message {
+  margin:0;
+  float:right;
   font-size:15px;
   color: #d00;
-  font-family: "Adelle Basic", arial, serif;
-  margin:10px 0 -10px 0;
 }
 
-.mainContent label.message.captcha{
-  margin: 10px 0 25px 0px;
-}
 .mainContent a{
   color: #005B60;
   font-size: 12px;
@@ -741,11 +739,6 @@ div.clear{
     font-size:11px;
     color:#666;
 }
-.overlay.contact #captcha{
-  position:relative;
-  top:-8px;
-  right:3px;
-}
 .overlay #side {
     float:right;
     width:200px;
@@ -755,9 +748,6 @@ div.clear{
     position:relative;
     top:-20px;
     height: 405px;
-}
-.overlay #registration label {
-    margin-top: 10px;    
 }
 
 .overlay.new_user input[type=text], .overlay.new_user input[type=password]{
@@ -772,6 +762,10 @@ div.clear{
 .overlay .overlay_form {
     width:780px;
 }
+.placeholder{
+  font-size:12px;
+  color:#999;
+}
 .registration_left {
     width: 380px;
     float: left;    
@@ -781,7 +775,8 @@ div.clear{
     float: right;    
 }
 .registration_right textarea {
-    height: 150px!important;
+    /* margin-bottom:0px;*/
+    height: 270px!important;
 }
 .registration_left p.desc {
     color: #666;
@@ -812,11 +807,6 @@ div.clear{
   border-radius: 5px;
   margin-bottom:20px;
 }
-.overlay.contact label {
-  margin-top:22px;
-  font-size:18px;
-  margin-bottom:0px;
-}
 
 .overlay textarea {
   margin-top:0;
@@ -836,9 +826,9 @@ div.clear{
 }
 .overlay.contact .option{
   position:absolute;
-  bottom:0px;
+  bottom:5px;
   font-size:12px;
-  left:20px;
+  right: 25px;
   display:block;
 }
 
@@ -955,27 +945,27 @@ div#formatting_guide table td h3 {
 }
 
 #wizard li {
+  display:inline;
 	list-style-type:none;
 	list-style-image:none;
-	margin-bottom:25px;	
 }
 
-#wizard label {
-	font-size:16px;	
-	display:block;
-}
+/* #wizard label {*/
+/*   font-size:16px;	*/
+/*   display:block;*/
+/* }*/
 
-#wizard label strong {
-	color:#789;	
-	position:relative;
-	top:-1px;
-}
+/* #wizard label strong {*/
+/*   color:#789;	*/
+/*   position:relative;*/
+/*   top:-1px;*/
+/* }*/
 
-#wizard label em {
-	font-size:11px;
-	color:#666;	
-	font-style:normal;
-}
+/* #wizard label em {*/
+/*   font-size:11px;*/
+/*   color:#666;	*/
+/*   font-style:normal;*/
+/* }*/
 
 #wizard .text {
 	width:100%;

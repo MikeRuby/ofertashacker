@@ -1,5 +1,6 @@
+
 <div id="registration">
-  <%= form_for @user,:id =>"user_new", :url => user_registration_path(:job => job) do |f| %>
+  <%= form_for @user,:id =>"user_new", :validate =>true, :url => user_registration_path(:job => job) do |f| %>
     <div id="wizard">
       <!-- scrollable items -->
       <div class="items">
@@ -8,42 +9,38 @@
           <div class="registration_left">
             <h3>¿Qué le quieres decir a la empresa?</h3>
 
-            <%= f.text_field :name, :placeholder => "#{t('.name')}"%>
-            <%= f.text_field :email , :placeholder => "#{t('.email')}"%>
-            <%= text_field_tag :github ,nil, :placeholder => "URL Github"%>
-            <%= text_field_tag :linkedin , nil,:placeholder => "URL Linkedin"%>
-            <%= text_field_tag "Algo mas?", nil,  :placeholder => "URL Personal"%>
-            <p class="desc">Le enviaremos el correo a la empresa y guardaremos tus datos para ahorrarte este paso la próxima vez que apliques a cualquier otra oferta.</p>
+            <li class="required"><%= f.text_field :name, :placeholder => "#{t('.name')}"%></li>
+            <li class="required"><%= f.text_field :email , :placeholder => "#{t('.email')}"%></li>
+            <%= f.text_field :github_url, :placeholder => "#{t('.github')}" %>
+            <%= f.text_field :linkedin_url, :placeholder => "#{t('.linkedin')}" %>
+            <%= f.text_field :personal_url, :placeholder => "#{t('.personal')}" %>
           </div>
           <div class="registration_right">
             <div class="sign_in_box">
               <p>¿Ya tienes cuenta? <%= link_to "Entrar", "#", :id=>"login" %></p>
             </div>
-            <%= f.text_area :message, :placeholder => "#{t('.message')}"%>
-            <div id="captcha">
-              <%= raw (recaptcha_tag :challenge)%>
-            </div>
+            <li class="required"><%= f.text_area :message, :placeholder => "#{t('.message')}"%></li>
             <br />
             <%= link_to "Enviar Mensaje","#", :class=>"button big next"  %>
           </div>
         </div>
         <div class="page">
 
-          <h3>Listo tenemos tu mensaje, quieres que guardemos tus datos</h3>
+          <h3>Listo! tenemos tu mensaje, ¿quieres que guardemos tus datos?</h3>
           <p>
-          Si te registras en Ofertas Hacker ya no sera necesario que vuelvas a escribir tu nombre, 
-          correo y ligas de contacto cada vez que quieras contactar una empresa.
+          Si te registras en Ofertas Hacker ya no será necesario que vuelvas a escribir tu nombre, 
+          correo ni ligas de contacto cada vez que quieras contactar a otra empresa.
           </p>
 
           <p>
-          Nadamas faltaría que eligas una contraseña y estas dentro. Prometemos no enviarte spam,
-          vender tus datos ni cualquier otra cosa que te pudiera molestar.
+          Ahora solamente falta que elijas una contraseña y estás dentro. Prometemos no enviarte spam
+         ni cualquier otra cosa que te pudiera molestar.
           </p>
 
           <div class="center">
-            <%= f.password_field :password , :placeholder => "#{t('.password')}"%><br />
+            <%= f.password_field :password , :validate => false, :placeholder => "#{t('.password')}"%><br />
 
-            <%= f.password_field :password_confirmation , :placeholder => "#{t('.password_confirmation')}"%>
+            <%= f.password_field :password_confirmation , :validate => false, :placeholder => "#{t('.password_confirmation')}"%>
             <br />
 
             <%= f.submit "Registrarme", :class => "button", :name=> "register"%> o 
@@ -64,7 +61,7 @@
 <div id="sign_in">
   <h3>Iniciar sesión</h3>
   <% if params[:sign_in] == "error" %>
-    <%= content_tag "p", "Contraseña o email inválido", :class => :message %>
+    <%= content_tag "p", "Contraseña o email inválido", :class => 'message inline' %>
   <% end %>
   <%= form_for @user, :url => user_session_path(:job => job,:sign_in => "error") do |f| %>
 
