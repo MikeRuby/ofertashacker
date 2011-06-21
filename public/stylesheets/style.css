@@ -216,12 +216,14 @@ img#nuevas_ofertas{
   display:inline;
 }
 
-.mainContent label.message{
-  font-size: 12px;
+.mainContent .overlay .textarea label.message{ margin-top:-237px; margin-right:3px; }
+.mainContent .overlay label.message{
+  font-size: 15px;
 	color: #d00;
+  font-style:italic;
   font-family: arial, serif!important;
-  margin: -15px 0 0 0px;
-  float:left;
+  margin: -77px 0 0 0px;
+  float:right;
 }
 .mainContent p.message {
   margin:0;
@@ -501,6 +503,7 @@ textarea{
 /*================== PERFIL ====================*/			
 
 .button{
+  font-family: Helvetica;
   color: #FFF !important;
   text-decoration: none !important;
   padding: 10px;
@@ -517,7 +520,7 @@ textarea{
 }
 .button:hover{
   background: -moz-linear-gradient(top,  #99CC00, #5E8B00);
-  background: -webkit-gradient(linear, center top, center bottom, from(#EAF3F6), color-stop(50%,#5E8B00));
+  background: -webkit-gradient(linear, center top, center bottom, from(#99CC00), color-stop(50%,#5E8B00));
   border: 2px solid #5E8B00;
   border-bottom: 0 none;
 }
@@ -531,6 +534,12 @@ textarea{
 #buttons{
   float: right;
   margin-right: 10px;
+}
+.right {
+  float: right;
+}
+.left {
+  float: left;
 }
 
 #Localizacion{
@@ -727,8 +736,9 @@ div.clear{
 .overlay .big{
   display:block;
   float:right;
+  font-size:16px;
   padding:10px 30px;
-  margin-top:-10px;
+  margin-top:0;
 }
 .overlay .center {
   margin: 95px 0 0 200px;
@@ -739,6 +749,20 @@ div.clear{
     font-size:11px;
     color:#666;
 }
+
+.overlay.contact.signed_in {width: 380px;}
+
+.overlay.contact label {
+font-size: 18px;
+margin-bottom: 0px;
+}
+
+.overlay.contact li {
+  display:inline;
+	list-style-type:none;
+	list-style-image:none;
+}
+
 .overlay #side {
     float:right;
     width:200px;
@@ -774,14 +798,11 @@ div.clear{
     width: 380px;
     float: right;    
 }
-.registration_right textarea {
-    /* margin-bottom:0px;*/
-    height: 270px!important;
-}
-.registration_left p.desc {
+p.desc {
     color: #666;
+    max-width: 200px;
     font-size: 11px;
-    padding-top:36px;
+    padding-top:5px;
     font-style: italic;
     font-weight: normal;
 }
@@ -795,13 +816,13 @@ div.clear{
 
 .overlay.contact h3 {
   padding-top:5px;
-  padding-bottom:19px;
+  padding-bottom:26px;
   font-size:20px;
   color:#00575A;
 }
 .overlay.contact input[type=text], .overlay.contact input[type=password]{
   height:30px;
-  width:363px;
+  width:360px;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   border-radius: 5px;
@@ -809,9 +830,9 @@ div.clear{
 }
 
 .overlay textarea {
-  margin-top:0;
+  margin:7px auto 20px auto;
 	width: 355px;
-  height: 160px;
+  height: 183px;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   border-radius: 5px;
@@ -819,16 +840,16 @@ div.clear{
 .overlay #user_submit {
   font-size:16px;
 }
-.overlay.contact #user_info a{float:right;}
 .overlay.contact #user_info{
   padding-top:3px;
+  margin-bottom: 10px;
 
 }
 .overlay.contact .option{
   position:absolute;
-  bottom:5px;
+  bottom: 20px;
   font-size:12px;
-  right: 25px;
+  left: 25px;
   display:block;
 }
 
@@ -942,12 +963,6 @@ div#formatting_guide table td h3 {
 #wizard ul {
 	padding:0px !important;
 	margin:0px !important;
-}
-
-#wizard li {
-  display:inline;
-	list-style-type:none;
-	list-style-image:none;
 }
 
 /* #wizard label {*/

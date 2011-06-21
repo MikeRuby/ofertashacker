@@ -1,7 +1,5 @@
 $(document).ready(function() {
 
-	$('[placeholder]').placeholder();
-
   $("a[rel]").overlay({
     mask: {
       color: '#333',
@@ -12,17 +10,19 @@ $(document).ready(function() {
   });
   var root = $("#wizard").scrollable();
   $("#registration form").validator();
-  
-$('.button.next').click(function(e) {
-  if ( placeholder_validation_needs_fix() ) {
-    // $('div.wizard').css({'left':'0'});
-  }
-});
 
+  $(".overlay #user_submit").click(function(e){
+      if($("label.message").length > 0) {
+        $('.button.prev').click();
+      }
+  });
+  $(':text:first').focus();  
+  
   $("#sign_in").hide();
 
+  //No user logged in
   if ($("#sign_me_in").length > 0) {
-    $(".overlay.contact").animate({'width':'380px', 'height': '290px','marginLeft':'200px'});
+    $(".overlay.contact").animate({'width':'380px', 'height': '270px','marginLeft':'200px'});
     $("#registration").hide();
     $("#sign_in").show();
   }
@@ -30,15 +30,33 @@ $('.button.next').click(function(e) {
     $("#contact_button").click();
 
   $("#registration #login").click(function(){
-    $(".overlay.contact").animate({'width':'380px', 'height': '290px','marginLeft':'200px'});
+    $(".overlay.contact").animate({'width':'380px', 'height': '270px','marginLeft':'200px'});
     $("#registration").fadeOut({complete:function(){$("#sign_in").fadeIn();}});
 
   });
-
+  
   $("#sign_in #register").click(function(){
-    $(".overlay.contact").animate({'width':'780px', 'height':'460px','marginLeft':'0'});
+    $(".overlay.contact").animate({'width':'780px', 'height':'425px','marginLeft':'0'});
     $("#sign_in").hide({complete:function(){$("#registration").fadeIn();}});
   });
+
+  //User logged in
+  $("#edit_form").hide();
+
+
+  if ($("#edit_me").length > 0) {
+    $("#message_form").hide();
+    $("#edit_form").show();
+  }
+
+  $("#message_form #edit_link").click(function(){
+    $("#message_form").fadeOut({complete:function(){$("#edit_form").fadeIn();}});
+  });
+
+  $("#edit_form #message_link").click(function(){
+    $("#edit_form").fadeOut({complete:function(){$("#message_form").fadeIn();}});
+  });
+
 
   //Tab Hack for form
   root.find(".button.next").keydown(function(e) {
@@ -103,23 +121,3 @@ api.onBeforeSeek(function(event, i) {
 
 });
 
-function placeholder_validation_needs_fix(){
-  var error = false;
-  if ($("#user_email").attr("placeholder") == $("#user_email").val()) {
-    $("#user_email").addClass("error");
-    error=true;
-  } else {
-  
-  }
-
-  if ($("#user_name").attr("placeholder") == $("#user_name").val()) {
-    $("#user_name").addClass("error");
-    error=true;
-  }
-  
-  if ($("#user_message").attr("placeholder") == $("#user_message").val()) {
-    $("#user_message").addClass("error");
-    error=true;
-  }
-  return error;
-}

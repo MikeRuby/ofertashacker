@@ -3,20 +3,23 @@ class UsersController < ApplicationController
     @user = current_user
     @user.message = params[:user][:message]
     @job = Job.find(params[:job])
-    ContactMailer.contact(job, @user).deliver if @user
-    redirect_to @job
+    ContactMailer.contact(@job, @user).deliver if @user
+    redirect_to @job, :notice => t('.')
   end
 
   def edit
-    @user = current_user 
+    @user = User.find(params[:id])
   end
 
   def update
-    @user = current_user
+    @job = Job.find(params[:job])
+    @user = User.find(params[:id])
+    @user.message = "default"
     if @user.update_attributes(params[:user])
-      redirect_to root_path
+      redirect_to job_path(@job, :open_lightbox => true)
     else
-      render :action => 'edit'
+      @user.message = ""
+      render :template=>'jobs/show'
     end
   end
 end
